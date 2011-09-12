@@ -6,7 +6,11 @@ Memo::Application.routes.draw do
   match "/chat/canal1", :controller => "chat", :action => "canal1"
   match "/chat/canal2", :controller => "chat", :action => "canal2"
 
-  root :to => "home#index"
+  match '/usuario' => "chat#canal1", :as => :usuario_root
+
+  devise_for :usuarios, :path_names => {:sign_up => 'registro', :sign_in => 'ingresar', :sign_out => 'salir'} do
+    get '/' => 'devise/sessions#new', :as => :usuario_login
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,6 +62,7 @@ Memo::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => "devise/sessions#new"
 
   # See how all your routes lay out with "rake routes"
 
