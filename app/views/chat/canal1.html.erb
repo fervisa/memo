@@ -1,0 +1,58 @@
+<script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
+<div class="container">
+  <div class="prepend-4 prepend-top span-15 last">
+    <div class="span-15 last" id="cabecera">
+      <div class="prepend-3 span-2 last" id="usuario">
+        <strong><%= current_usuario.email if current_usuario %></strong><br/>
+        <em>En línea</em>
+      </div>
+    </div>
+    <div class="span-15 last" id="barra"></div>
+    <div class="span-15 last" id="principal">
+      <div class="span-14 prepend-1 last prepend-top">
+        <div class="span-5">
+          <div class='span-5 last' id="player">
+            <div id="emoticon">
+              <%= image_tag 'chat/emoticon.png' %>
+            </div>
+          </div>
+          <div class="prepend-top span-5 last" id="contactos">
+            <div class="push-1 prepend-top span-3 last" id="lista-contactos">
+              <strong>Contactos</strong>
+              <center>
+                <ul>
+                  <li>Contacto 1</li>
+                  <li>Contacto 1</li>
+                  <li>Contacto 1</li>
+                  <li>Contacto 1</li>
+                </ul>
+              </center>
+            </div>
+          </div>
+        </div>
+        <div class="span-8 last">
+          <div class='push-1 span-7 last' id="chat"></div>
+          <div class="push-1 span-7 last" id="mensaje">
+            <script type="text/javascript" charset="utf-8">
+              var jug = new Juggernaut();
+
+              $("#chat").append($("<li/>").append("Entrando al salón de charla"));
+              jug.subscribe("/chats/canal1_canal2", function(data){
+                  var li = $("<li/>");
+                  li.text(data.mensaje);
+                  $("#chat").append(li);
+                  $("#chat").attr({ scrollTop: $("#chat").attr("scrollHeight") });
+                  $('#msg_body').val('');
+                  }); 
+            </script>
+            <%= form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
+              <%= text_field_tag 'msg_body', '', :class => 'texto' %>
+              <%= submit_tag 'Enviar', :class => 'right' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

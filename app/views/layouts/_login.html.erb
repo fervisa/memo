@@ -1,0 +1,11 @@
+<div class="prepend-top push-2 span-20 last" id="login">
+  <div class="push-10 span-10 last">
+    <div class="prepend-2 span-8 last">
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do %>
+        <%= text_field_tag 'msg_body', '', :class => 'texto' %>
+        <%= text_field_tag 'msg_body', '', :class => 'texto' %>
+        <%= submit_tag 'Enviar' %>
+      <% end %>
+    </div>
+  </div>
+</div>
