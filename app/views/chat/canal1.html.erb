@@ -3,7 +3,7 @@
   <div class="prepend-4 prepend-top span-15 last">
     <div class="span-15 last" id="cabecera">
       <div class="prepend-3 span-2 last" id="usuario">
-        <strong><%= current_usuario.email if current_usuario %></strong><br/>
+        <strong><%= current_usuario.amigo.nombre if current_usuario %></strong><br/>
         <em>En línea</em>
       </div>
     </div>
@@ -21,10 +21,9 @@
               <strong>Contactos</strong>
               <center>
                 <ul>
-                  <li>Contacto 1</li>
-                  <li>Contacto 1</li>
-                  <li>Contacto 1</li>
-                  <li>Contacto 1</li>
+                  <% current_usuario.amigo.amistads.each do |amigo| %>
+                    <li><%= amigo.amigo_destino.nombre %></li>
+                  <% end %>
                 </ul>
               </center>
             </div>

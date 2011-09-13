@@ -23,6 +23,10 @@ gem 'juggernaut'
 
 gem 'devise'
 
+gem 'paperclip'
+
+# gem 'cancan'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  skin: 
+  usuario: 
+  activo: false
+  nombre: MyString
+  apellido: MyString
+
+two:
+  skin: 
+  usuario: 
+  activo: false
+  nombre: MyString
+  apellido: MyString

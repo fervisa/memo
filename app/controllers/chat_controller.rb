@@ -1,4 +1,5 @@
 class ChatController < ApplicationController
+  before_filter :authenticate_usuario!
 
   def send_message
     @messg = params[:msg_body]

@@ -10,7 +10,83 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911173058) do
+ActiveRecord::Schema.define(:version => 20110913004723) do
+
+  create_table "amigos", :force => true do |t|
+    t.integer  "skin_id"
+    t.integer  "usuario_id"
+    t.boolean  "activo"
+    t.string   "nombre"
+    t.string   "apellido"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "amigos", ["skin_id"], :name => "index_amigos_on_skin_id"
+  add_index "amigos", ["usuario_id"], :name => "index_amigos_on_usuario_id"
+
+  create_table "amistads", :force => true do |t|
+    t.integer  "amigo_id"
+    t.integer  "amigo_destino_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "amistads", ["amigo_destino_id"], :name => "index_amistads_on_amigo_destino_id"
+  add_index "amistads", ["amigo_id"], :name => "index_amistads_on_amigo_id"
+
+  create_table "avatars", :force => true do |t|
+    t.integer  "conf_usuario_id"
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  add_index "avatars", ["conf_usuario_id"], :name => "index_avatars_on_conf_usuario_id"
+
+  create_table "emails", :force => true do |t|
+    t.integer  "amistad_id"
+    t.string   "asunto"
+    t.text     "contenido"
+    t.date     "fecha"
+    t.time     "hora"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emails", ["amistad_id"], :name => "index_emails_on_amistad_id"
+
+  create_table "historials", :force => true do |t|
+    t.integer  "amistad_id"
+    t.date     "fecha"
+    t.time     "hora"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "platica_file_name"
+    t.string   "platica_content_type"
+    t.integer  "platica_file_size"
+    t.datetime "platica_updated_at"
+  end
+
+  add_index "historials", ["amistad_id"], :name => "index_historials_on_amistad_id"
+
+  create_table "skins", :force => true do |t|
+    t.string   "margen"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cabecera_file_name"
+    t.string   "cabecera_content_type"
+    t.integer  "cabecera_file_size"
+    t.datetime "cabecera_updated_at"
+    t.string   "fondo_file_name"
+    t.string   "fondo_content_type"
+    t.integer  "fondo_file_size"
+    t.datetime "fondo_updated_at"
+  end
 
   create_table "usuarios", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

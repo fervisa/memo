@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amistad: 
+  fecha: 2011-09-12
+  hora: 2011-09-12 17:50:51
+
+two:
+  amistad: 
+  fecha: 2011-09-12
+  hora: 2011-09-12 17:50:51
