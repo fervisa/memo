@@ -1,12 +1,59 @@
 <script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
 <div class="container">
   <div class="prepend-4 prepend-top span-15 last">
+
     <div class="span-15 last" id="cabecera">
-      <div class="prepend-3 span-2 last" id="usuario">
+      <div class="prepend-3 span-2" id="usuario">
         <strong><%= current_usuario.amigo.nombre if current_usuario %></strong><br/>
         <em>En línea</em>
       </div>
+
+      <div class="span-1" id="add_contact">
+        <%= image_tag 'chat/addcontactos.png' %>
+      </div>
+
+      <div class="span-1" id="mail">
+        <%= image_tag 'chat/mail.png' %>
+      </div>
+
+      <div class="span-8 last" id="menu">
+	<ul id="menu-horizontal">
+	   <li class="curved">Archivo
+		<ul>
+		     <li>Cerrar Sesion</li>
+		     <li>Estado
+			<ul>
+			   <li>Disponible</li>
+			   <li>Ausente</li>
+			   <li>Desconectado</li>
+			</ul>
+		     </li>
+		     <li>Ver Historial</li>
+		</ul>
+	   </li>
+	   <li class="curved">Contactos
+		<ul>
+		     <li>Agregar Contacto</li>
+		     <li>Eliminar Contacto</li>
+		</ul>	   
+           </li>
+	   <li class="curved">Acciones
+		<ul>
+		     <li>Enviar E-mail</li>
+		     <li>Enviar Avatar</li>
+		</ul>
+	    </li>
+	   <li class="curved">Herramientas
+		<ul>
+		     <li>Cambiar Apariencia</li>
+		     <li>Avatares...</li>
+		</ul>
+           </li>
+	</ul>
+      </div>
+	
     </div>
+
     <div class="span-15 last" id="barra"></div>
     <div class="span-15 last" id="principal">
       <div class="span-14 prepend-1 last prepend-top">
@@ -30,7 +77,7 @@
           </div>
         </div>
         <div class="span-8 last">
-          <div class='push-1 span-7 last' id="chat"></div>
+          <div class="push-1 span-7 last" id="chat"></div>
           <div class="push-1 span-7 last" id="mensaje">
             <script type="text/javascript" charset="utf-8">
               var jug = new Juggernaut();
@@ -46,7 +93,16 @@
             </script>
             <%= form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
               <%= text_field_tag 'msg_body', '', :class => 'texto' %>
-              <%= submit_tag 'Enviar', :class => 'right' %>
+		<div class="prepend-4 span-1 alinn">
+	          <%= image_tag 'chat/fuente.png' %>
+		</div>
+		<div class="span-1 alinn">
+	          <%= image_tag 'chat/avatares.png' %>
+		</div>
+		<div class="span-1 last">
+              <%#= submit_tag 'E', :class => 'right' %>
+		<button type="submit"></buttom>
+		</div>
             <% end %>
           </div>
         </div>
