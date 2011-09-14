@@ -115,3 +115,8 @@
   </div>
 </div>
 
+<br />
+
+<% Skin.all.each do |skin| %>
+  <%= link_to "skin#{skin.id}", "/skins/#{skin.id}/get", :class => 'skin' %>
+<% end %>
