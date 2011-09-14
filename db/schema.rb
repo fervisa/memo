@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20110913004723) do
   add_index "amistads", ["amigo_id"], :name => "index_amistads_on_amigo_id"
 
   create_table "avatars", :force => true do |t|
-    t.integer  "conf_usuario_id"
+    t.integer  "amigo_id"
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20110913004723) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "avatars", ["conf_usuario_id"], :name => "index_avatars_on_conf_usuario_id"
+  add_index "avatars", ["amigo_id"], :name => "index_avatars_on_amigo_id"
 
   create_table "emails", :force => true do |t|
     t.integer  "amistad_id"

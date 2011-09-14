@@ -33,16 +33,20 @@
           <div class='push-1 span-7 last' id="chat"></div>
           <div class="push-1 span-7 last" id="mensaje">
             <script type="text/javascript" charset="utf-8">
+              $f('emoticon', '/flowplayer.swf');
               var jug = new Juggernaut();
 
               $("#chat").append($("<li/>").append("Entrando al salón de charla"));
               jug.subscribe("/chats/canal1_canal2", function(data){
-                  var li = $("<li/>");
-                  li.text(data.mensaje);
-                  $("#chat").append(li);
-                  $("#chat").attr({ scrollTop: $("#chat").attr("scrollHeight") });
-                  $('#msg_body').val('');
-                  }); 
+                  if (data.hasOwnProperty('avatar') && data.usuario != '<%= current_usuario.email %>'){
+                  $f().play(data.avatar);
+                }
+                var li = $("<li/>");
+                li.text(data.mensaje);
+                $("#chat").append(li);
+                $("#chat").attr({ scrollTop: $("#chat").attr("scrollHeight") });
+                $('#msg_body').val('');
+              }); 
             </script>
             <%= form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
               <%= text_field_tag 'msg_body', '', :class => 'texto' %>
