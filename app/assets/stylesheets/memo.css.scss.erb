@@ -45,30 +45,38 @@ div#menu{
 #menu-horizontal li >ul > li > ul{
   position:absolute;
   left:85px;
-  top:5px;
+  top:-3px;
   display:none;
 }
 
 .galeria_avatares {
   position:absolute;
-  float: left;
   display: inline-block;
-  left:0px;
+  left:100px;
   top: 0px;  
-  background:blue;
-  padding: 10px 10px;
-  width: 150px;
-  height: 150px;
-  left: 100px;
+  background: url(<%= asset_path 'chat/fondo-skins.png' %>) repeat;
+  width: 100px;
+  height: 110px;
+  padding-top:10px;
+  padding-left:10px;
+  padding-right:0px;
+  padding-bottom:10px;
+}
+
+.skin{
+  height: 30px;
+  width: 33px;
+  float:left;
 }
 
 .skin a{
-  position: relative;
+  position:relative;
   display:block;
-  background: url(<%= asset_path 'chat/avatares.png' %>) no-repeat;
+  background: url(<%= asset_path 'chat/skin.png' %>) no-repeat;
   padding: 10px 10px;
-  width: 30px;
-  height : 30px;
+  width: 24px;
+  height : 24px;
+  overflow:hidden;
 }
 
 #menu-horizontal li{
