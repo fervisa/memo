@@ -43,15 +43,22 @@
 		     <li>Enviar Avatar</li>
 		</ul>
 	    </li>
-	   <li class="curved">Herramientas
+	   <li id="herramientas" class="curved">Herramientas
 		<ul>
-		     <li>Cambiar Apariencia</li>
-		     <li>Avatares...
- 			<div class="galeria_avatares">
+		     <li>Cambiar Apariencia
+ 			<div class="galery">
 			  <% Skin.all.each do |skin| %>
-			    <div class="boxskin">
-			    <%= link_to "skin#{skin.id}", "/skins/#{skin.id}/get", :class => 'skin' %>
-			      <a class="skin" href=" " title="Skins-avatares"> </a> 
+			    <div class="boxgalery">
+ 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
+			    </div>
+			  <% end %>
+			</div>
+		     </li>
+		     <li>Avatares...
+ 			<div class="galery">
+			  <% Skin.all.each do |skin| %>
+			    <div class="boxgalery">
+ 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
 			    </div>
 			  <% end %>
 			</div>
@@ -111,7 +118,13 @@
 		</div>
 		<div class="span-1 alinn">
 	          <%= image_tag 'chat/avatares.png' %>
-		</div>
+ 			<div id="avatars" class="galery">
+			  <% Skin.all.each do |skin| %>
+			    <div class="boxgalery">
+ 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
+			    </div>
+			  <% end %>
+			</div>		</div>
 		<div class="span-1 last">
               <%#= submit_tag 'E', :class => 'right' %>
 		<button type="submit"></button>

@@ -42,40 +42,45 @@ div#menu{
   display:block;
 }
 
+#herramientas li:hover > div{
+  display:inline-block;
+}
+
 #menu-horizontal li >ul > li > ul{
   position:absolute;
-  left:85px;
+  left:92px;
   top:-3px;
   display:none;
 }
 
-.galeria_avatares {
-  position:absolute;
-  display: inline-block;
-  left:100px;
+.galery{
+  left:110px;
   top: 0px;  
-  background: url(<%= asset_path 'chat/fondo-skins.png' %>) repeat;
+  position:absolute;
+  display:none;
+  background: url(<%= asset_path 'chat/fondo-skins.png' %>) no-repeat;
   width: 100px;
-  height: 110px;
-  padding-top:10px;
-  padding-left:10px;
-  padding-right:0px;
-  padding-bottom:10px;
+  height: 100px;
+  padding-top:2px;
+  padding-left:2px;
+  padding-right:2px;
+  padding-bottom:2px;
 }
 
-.boxskin{
-  height: 30px;
-  width: 33px;
-  float:left;
+#avatars {
+  left:200px;
+  top: 80px;  
 }
 
-.boxskin a{
-  position:relative;
-  display:block;
-  padding: 10px 10px;
+.boxgalery{
+  height: 24px;
   width: 24px;
-  height : 24px;
-  overflow:hidden;
+  margin-left: 2px;
+  margin-right:3px;
+  margin-bottom: 3px;
+  margin-top:2px;
+  float:left;
+  border: 2px solid #878787;
 }
 
 #menu-horizontal li{
