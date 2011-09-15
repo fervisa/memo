@@ -9,11 +9,11 @@
       </div>
 
       <div class="span-1" id="add_contact">
-        <%= image_tag 'chat/adcontactos.png' %>
+        <%= link_to image_tag('chat/adcontactos.png'), '#' %>
       </div>
 
       <div class="span-1" id="mail">
-        <%= image_tag 'chat/sobre.png' %>
+        <%= link_to image_tag('chat/sobre.png'), '#' %>
       </div>
 
       <div class="span-8 last" id="menu">
@@ -114,7 +114,7 @@
 		</div>
 		<div class="span-1 last">
               <%#= submit_tag 'E', :class => 'right' %>
-		<button type="submit"></buttom>
+		<button type="submit"></button>
 		</div>
             <% end %>
           </div>
@@ -125,3 +125,8 @@
 </div>
 
 <br />
+
+<% current_usuario.amigo.avatars.all.each do |avatar| %>
+  <%= link_to avatar.nombre, '#', :class => 'avatar', :value => avatar.nombre %>
+<% end %>
+

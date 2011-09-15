@@ -5,7 +5,7 @@ div#login{
 
 div#cabecera{
   height: 50px;
-  background: url(<%= asset_path 'chat/cabecera.png' %>) no-repeat;
+  /* background: url(<%= asset_path 'chat/cabecera.png' %>) no-repeat; */
   color: #ffffff;
 }
 
@@ -28,11 +28,13 @@ div#menu{
 #menu-horizontal{
   padding: 0;
   list-style-type: none;
+  margin-top: 5px;
 }
 
 #menu-horizontal ul{
+  margin-top: 5px;
   display: none;
-  left:-14px;
+  left: -16px;
   position: absolute;
 }
 
@@ -79,38 +81,49 @@ div#menu{
 #menu-horizontal li{
   font-family: Arial;  
   font-size:10px; 
-  color: black; 
+  color: #4d4d4d; 
   float: left;
-  background: url(<%= asset_path 'chat/boton-menu.png' %>) no-repeat;
+  background: url(<%= asset_path 'chat/fondo-menu.png' %>) repeat-x;
+  margin-right: 1px;
+  border: 1px solid #d3d3d3;
   position: relative;
-  width:50;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-bottom: 7px;
-  padding-top: 7px;
+  /* width:50; */
+  padding: 5px 12px;
 }
 
 .curved {
-  -moz-border-radius-topleft: 15px;
-  -moz-border-radius-topright: 15px;
+  -moz-border-radius-topright: 8px;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
   behavior:url(border-radius.htc);
 }
 
 #menu-horizontal li ul li{
-  font-size:10px; 
+  border: 1px solid #c6c6c6;
+  border-top: white;
+  font-size:9px; 
   display: block;
   float: none;
   position: relative;
-  top:7px;
-  color: black;
-  padding: 0px 0px 0px 5px;
+  color: #4d4d4d;
+  padding: 0px 0px 0px 10px;
   line-height: 30px;
   width:95px;
-  background: url(<%= asset_path 'chat/fondo-submenu.png' %>) repeat;
+  background: #f6f6f6;
   z-index:10;
 }
 
+#menu-horizontal li ul li:last-child{
+  -moz-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+}
 
+#menu-horizontal li ul li:hover{
+  background: #eeeeee;
+}
 
 div#barra{
   height: 6px;
@@ -120,12 +133,12 @@ div#barra{
 
 div#principal{
   height: 415px;
-  background: url(<%= asset_path 'chat/fondo.png' %>) no-repeat;
+  /* background: url(<%= asset_path 'chat/fondo.png' %>) no-repeat; */
 }
 
 div#player{
   height: 140px;
-  background: #c3d2de;
+  /* background: #c3d2de; */
 }
 
 div#emoticon{
