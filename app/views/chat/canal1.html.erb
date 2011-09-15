@@ -9,11 +9,11 @@
       </div>
 
       <div class="span-1" id="add_contact">
-        <%= image_tag 'chat/adcontactos.png' %>
+        <%= link_to image_tag('chat/adcontactos.png'), '#' %>
       </div>
 
       <div class="span-1" id="mail">
-        <%= image_tag 'chat/sobre.png' %>
+        <%= link_to image_tag('chat/sobre.png'), '#' %>
       </div>
 
       <div class="span-8 last" id="menu">
@@ -121,7 +121,7 @@
 		</div>
 		<div class="span-1 last">
               <%#= submit_tag 'E', :class => 'right' %>
-		<button type="submit"></buttom>
+		<button type="submit"></button>
 		</div>
             <% end %>
           </div>
@@ -134,5 +134,17 @@
 <br />
 
 <% Skin.all.each do |skin| %>
-  <%= link_to "skin#{skin.id}", "/skins/#{skin.id}/get", :class => 'skin' %>
+  <% if current_usuario.amigo.skin == skin %>
+    <% clase = 'skin activo' %>
+  <% else %>
+    <% clase = 'skin' %>
+  <% end %>
+  <%= link_to "skin#{skin.id}", "/skins/#{skin.id}/get", :class => clase %>
+<% end %>
+  <%= link_to "skin9", "/skins/9/get", :class => 'skin' %>
+
+<br />
+
+<% current_usuario.amigo.avatars.all.each do |avatar| %>
+  <%= link_to avatar.nombre, '#', :class => 'avatar', :value => avatar.nombre %>
 <% end %>

@@ -17,6 +17,13 @@ $ ->
   $('a.skin').click (event) ->
     event.preventDefault()
     cambia_skin $(this).attr('href')
+
+  $('a.avatar').click (event) ->
+    event.preventDefault()
+    txt = $('#msg_body').val()
+    $('#msg_body').val(txt + $(this).attr('value'))
+
+  $('a.skin.activo').trigger('click')
     
 
     
