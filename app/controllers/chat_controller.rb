@@ -13,7 +13,16 @@ class ChatController < ApplicationController
 
   def parse_chat_message(msg)
     msj = "#{current_usuario.email} #{Time.now.strftime('%H:%M:%S')} - #{msg}"
-    return { :mensaje => msj }
+    respuesta = { :mensaje => msj, :usuario => current_usuario.email }
+    avatares = current_usuario.amigo.avatars.map(&:nombre)
+    avatares.each do |avatar|
+      if msg.include? avatar
+        ava = current_usuario.amigo.avatars.find_by_nombre avatar
+        respuesta.update( { :avatar => ava.avatar.url } )
+        break
+      end
+    end
+    return respuesta
   end
 
   def select_channel(receiver)

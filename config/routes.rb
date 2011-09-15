@@ -1,5 +1,9 @@
 Memo::Application.routes.draw do
 
+  resources :skins do
+    get 'get', :on => :member
+  end
+
   devise_for :usuarios
 
   match "/chat/send", :controller => "chat", :action => "send_message"
