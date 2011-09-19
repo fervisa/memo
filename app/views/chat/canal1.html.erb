@@ -20,7 +20,7 @@
 	<ul id="menu-horizontal" class="curved">
 	   <li class="curved">Archivo
 		<ul>
-		     <li>Cerrar Sesion</li>
+		     <li><%= link_to 'Cerrar sesión', destroy_usuario_session_path, :method => :delete %></li>
 		     <li>Estado
 			<ul>
 			   <li>Disponible</li>
@@ -49,16 +49,21 @@
  			<div class="galery">
 			  <% Skin.all.each do |skin| %>
 			    <div class="boxgalery">
- 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
+                              <% if current_usuario.amigo.skin == skin %>
+                                <% clase = 'skin activo' %>
+                              <% else %>
+                                <% clase = 'skin' %>
+                              <% end %>
+ 			      <%= link_to image_tag(skin.thumb.url), get_skin_path(skin), :class => clase %>
 			    </div>
 			  <% end %>
 			</div>
 		     </li>
-		     <li>Avatares...
+		     <li>Avatares
  			<div class="galery">
-			  <% Skin.all.each do |skin| %>
+			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
 			    <div class="boxgalery">
- 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
+                              <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
 			</div>
@@ -82,13 +87,11 @@
           <div class="prepend-top span-5 last" id="contactos">
             <div class="push-1 prepend-top span-3 last" id="lista-contactos">
               <strong>Contactos</strong>
-              <center>
                 <ul>
                   <% current_usuario.amigo.amistads.each do |amigo| %>
                     <li><%= amigo.amigo_destino.nombre %></li>
                   <% end %>
                 </ul>
-              </center>
             </div>
           </div>
         </div>
@@ -114,14 +117,13 @@
             <%= form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
               <%= text_field_tag 'msg_body', '', :class => 'texto' %>
 		<div class="prepend-4 span-1 alinn">
-	          <%= image_tag 'chat/fuente.png' %>
 		</div>
 		<div class="span-1 alinn">
-	          <%= image_tag 'chat/avatares.png' %>
+                  <%= link_to image_tag('chat/avatares.png'), '#', :id => 'link_avatares' %>
  			<div id="avatars" class="galery">
-			  <% Skin.all.each do |skin| %>
+			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
 			    <div class="boxgalery">
- 			      <%= link_to image_tag ('chat/skin.png'), "/skins/#{skin.id}/get", :class => 'skin'%>
+                              <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
 			</div>		</div>
@@ -137,9 +139,4 @@
   </div>
 </div>
 
-<br />
-
-<% current_usuario.amigo.avatars.all.each do |avatar| %>
-  <%= link_to avatar.nombre, '#', :class => 'avatar', :value => avatar.nombre %>
-<% end %>
-
+<div id="modal"></div>

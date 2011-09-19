@@ -54,17 +54,13 @@ div#menu{
 }
 
 .galery{
-  left:110px;
-  top: 0px;  
+  left:105px;
   position:absolute;
   display:none;
-  background: url(<%= asset_path 'chat/fondo-skins.png' %>) no-repeat;
-  width: 100px;
-  height: 100px;
-  padding-top:2px;
-  padding-left:2px;
-  padding-right:2px;
-  padding-bottom:2px;
+  background-color: #f1f2f2;
+  border: 1px solid #d3d3d3;
+  width: 99px;
+  padding: 2px;
 }
 
 #avatars {
@@ -126,6 +122,12 @@ div#menu{
   -webkit-border-bottom-right-radius: 8px;
 }
 
+#menu-horizontal li ul li a{
+  display: block;
+  text-decoration: none;
+  color: #4d4d4d;
+}
+
 #menu-horizontal li ul li:hover{
   background: #eeeeee;
 }
@@ -179,8 +181,10 @@ div#mensaje button{
 
 div#contactos{
   background: white;
-  opacity: .65;
-  filter: alpha(opacity=65);
+  opacity: .75;
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 
 
@@ -189,5 +193,6 @@ div#lista-contactos{
 }
 
 div#lista-contactos ul{
-  list-style-image: url(<%= asset_path 'chat/vinieta.png' %>)
+  list-style-image: url(<%= asset_path 'chat/vinieta.png' %>);
+  margin-left: 18px;
 }

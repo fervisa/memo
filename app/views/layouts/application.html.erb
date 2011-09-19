@@ -13,11 +13,13 @@
   </head>
   <body>
     <div class="container">
+      <!--
       <% if usuario_signed_in? %>
         <div class="right">
           Logueado como <%= current_usuario.email %>. ¿No eres tú? <%= link_to 'Cerrar sesión', destroy_usuario_session_path, :method => :delete %>
         </div>
       <% end %>
+      -->
 
       <% if notice %>
         <p class="notice"><%= notice %></p>

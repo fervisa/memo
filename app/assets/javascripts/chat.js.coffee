@@ -23,7 +23,10 @@ $ ->
     txt = $('#msg_body').val()
     $('#msg_body').val(txt + $(this).attr('value'))
 
-  $('a.skin.activo').trigger('click')
-    
+  $('a#link_avatares').click (event) ->
+    event.preventDefault()
+    $('div#avatars').toggle()
 
-    
+  $('a.skin.activo:first').trigger('click')
+
+  $( "div#modal" ).dialog ({height: 140, modal: true, autoOpen: false})

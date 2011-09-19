@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913004723) do
+ActiveRecord::Schema.define(:version => 20110919160436) do
 
   create_table "amigos", :force => true do |t|
     t.integer  "skin_id"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(:version => 20110913004723) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "thumb_file_name"
+    t.string   "thumb_content_type"
+    t.integer  "thumb_file_size"
+    t.datetime "thumb_updated_at"
   end
 
   add_index "avatars", ["amigo_id"], :name => "index_avatars_on_amigo_id"
@@ -86,6 +90,10 @@ ActiveRecord::Schema.define(:version => 20110913004723) do
     t.string   "fondo_content_type"
     t.integer  "fondo_file_size"
     t.datetime "fondo_updated_at"
+    t.string   "thumb_file_name"
+    t.string   "thumb_content_type"
+    t.integer  "thumb_file_size"
+    t.datetime "thumb_updated_at"
   end
 
   create_table "usuarios", :force => true do |t|

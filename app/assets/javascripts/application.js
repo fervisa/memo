@@ -8,3 +8,4 @@
 //= require jquery_ujs
 //= require chat 
 //= require_tree .
+//= require jquery_ui 
