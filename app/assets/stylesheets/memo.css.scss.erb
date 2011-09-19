@@ -54,12 +54,24 @@ div#menu{
 }
 
 .galery{
+  top:0px;
   left:105px;
   position:absolute;
   display:none;
   background-color: #f1f2f2;
   border: 1px solid #d3d3d3;
   width: 99px;
+  padding: 2px;
+}
+
+.galery_avatar{
+  top: 0px;
+  left:105px;
+  position:absolute;
+  display:none;
+  background-color: #f1f2f2;
+  border: 1px solid #d3d3d3;
+  width: 120px;
   padding: 2px;
 }
 
@@ -78,6 +90,19 @@ div#menu{
   float:left;
   border: 2px solid #878787;
 }
+
+.boxgalery_avatar{
+  height: 32px;
+  width: 32px;
+  background: url(<%= asset_path 'chat/skin.png' %>) repeat-x;
+  margin-left: 2px;
+  margin-right:3px;
+  margin-bottom: 3px;
+  margin-top:2px;
+  float:left;
+  border: 2px solid #878787;
+}
+
 
 #menu-horizontal li{
   font-family: Arial;  

@@ -60,14 +60,28 @@
 			</div>
 		     </li>
 		     <li>Avatares
- 			<div class="galery">
+ 			<div class="galery_avatar">
 			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
-			    <div class="boxgalery">
+			    <div class="boxgalery_avatar">
                               <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
+		 	    <div class="boxgalery_avatar">
+			  	<em>avatar2</em>
+			    </div>
+		 	    <div class="boxgalery_avatar">
+			  	<em>avatar3</em>
+			    </div>
+		 	    <div class="boxgalery_avatar">
+			  	<em>avatar4</em>
+			    </div>
+		 	    <div class="boxgalery_avatar">
+			  	<em>avatar5</em>
+			    </div>
+		 	    <div class="boxgalery_avatar">
+			  	<em>avatar6</em>
+			    </div>
 			</div>
-		     </li>
 		</ul>
            </li>
 	</ul>
@@ -120,9 +134,9 @@
 		</div>
 		<div class="span-1 alinn">
                   <%= link_to image_tag('chat/avatares.png'), '#', :id => 'link_avatares' %>
- 			<div id="avatars" class="galery">
+ 			<div id="avatars" class="galery_avatar">
 			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
-			    <div class="boxgalery">
+			    <div class="boxgalery_avatar">
                               <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
