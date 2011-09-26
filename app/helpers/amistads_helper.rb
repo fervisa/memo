@@ -1,0 +1,2 @@
+module AmistadsHelper
+end

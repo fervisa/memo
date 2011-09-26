@@ -1,0 +1,6 @@
+<%= label_tag :historial, 'Elija una conversación' %><br/>
+<%= collection_select(:historial, :id, current_usuario.amigo.historials , :id, :created_at, {:include_blank => true}) %>
+<br/>
+<%= label_tag :conversacion, 'Conversacion:' %><br/>
+<%= text_area_tag :conversacion, '', :readonly => 'readonly' %>
+

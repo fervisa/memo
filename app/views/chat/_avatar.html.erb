@@ -1,0 +1,41 @@
+<style>
+  #avatares .ui-selecting { background: #FECA40; }
+  #avatares .ui-selected { background: #F39814; color: white; }
+  #avatares { list-style-type: none; margin: 0; padding: 0; }
+  #avatares li { margin: 2px; padding: 1px; float: left; width: 34px; height: 34px; text-align: center; }
+</style> 
+
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<%= form_tag '/chat/enviar_email', :remote => true do %>
+
+  <div class="left">
+    <%= label_tag :email, 'Correo Electrónico:' %><br/>
+    <%= email_field_tag :email, nil, :size => 25 %><br/>
+    <%= label_tag :asunto, 'Asunto:' %><br/>
+    <%= text_field_tag :asunto, nil, :size => 25 %><br/>
+    <%= label_tag :mensaje, 'Mensaje:' %><br/>
+    <%= text_area_tag :mensaje, '', :class => 'mensaje' %>
+  </div>
+  <div >
+    <b>Avatar</b>
+    <ol id="avatares">
+      <% current_usuario.amigo.avatars.each do |avatar| %>
+        <li class="ui-state-default">
+        <%= image_tag avatar.thumb.url %>
+        </li>
+      <% end %>
+    </ol>    
+  </div>
+
+  <br /> 
+
+  <%= submit_tag 'Enviar Email', :class => 'right' %>
+
+<% end %>

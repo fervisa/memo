@@ -1,0 +1,22 @@
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<%= form_tag '/chat/enviar_email', :remote => true do %>
+
+  <%= label_tag :email, 'Correo Electrónico:' %><br/>
+  <%= email_field_tag :email, nil, :size => 25 %><br/>
+  <%= label_tag :asunto, 'Asunto:' %><br/>
+  <%= text_field_tag :asunto, nil, :size => 25 %><br/>
+  <%= label_tag :mensaje, 'Mensaje:' %><br/>
+  <%= text_area_tag :mensaje, '', :class => 'mensaje' %>
+
+  <br /> 
+
+  <%= submit_tag 'Enviar Email', :class => 'right' %>
+
+<% end %>

@@ -1,0 +1,51 @@
+<fieldset class="ui-widget ui-widget-content ui-corner-all">
+  <legend class="ui-widget-header ui-corner-all"><div>Contacto</div></legend>
+<div class="span-13 push-1">
+  <%= form_tag :action => :enviar_correo do %>
+    <div class="span-4">
+    <%= label_tag :nombre, 'Nombre:' %>
+  </div>
+    <div class="span-6 last">
+    <%= text_field_tag :nombre, nil, :placeholder => 'Introduzca su nombre...' , :size => 25 %>
+  </div>
+
+    <div class="span-4">
+    <%= label_tag :email, 'Correo Electrónico:' %>
+  </div>
+    <div class="span-6 last">
+    <%= email_field_tag :email, nil, :placeholder => 'Introduzca su correo electrónico...', :size => 25 %>
+  </div>
+
+    <div class="span-4">
+   <%= label_tag :telefono, 'Teléfono:' %>
+  </div>
+    <div class="span-6 last">
+    <%= text_field_tag :telefono, nil, :placeholder => 'Introduzca su teléfono...', :size => 25 %>
+  </div>
+
+    <div class="span-6 last">
+    <%= label_tag :mensaje, 'Mensaje:' %>
+  </div>
+    <%= text_area_tag :mensaje %>
+    <br /> 
+    <%= recaptcha_tags(:display => { :lang => 'es', :theme => 'white' }) %> 
+    <br /> 
+    <button type="submit" class="ui-icon-mail-closed ">Enviar Correo</button>
+
+
+   <% end %>
+</div>
+<div class="span-7 last">
+  <div class="span-7"><%= image_tag 'mail.png' %>
+  </div>
+  <br />
+  <p>También puede contactarnos por otros medios:</p>
+  <p> <b>Teléfono:</b><br /> (951) 51 30827</p>
+  <p> <b>En nuestras instalaciones:</b><br />
+  Calzada Porfirio Díaz 233-D<br />
+  Colonia Reforma<br />
+  Oaxaca de Juárez, Oaxaca<br />
+  CP: 68050
+  </p>
+</div>
+</fieldset>

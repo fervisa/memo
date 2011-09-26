@@ -1,0 +1,31 @@
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<%= form_tag amistads_path, :remote => true do %>
+  <table class="ui-widget ui-widget-content">
+    <thead class='ui-widget-header'>
+      <tr>
+        <th style="text-align: center">&#x2713;</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @amigos.each do |amigo| %>
+        <tr>
+          <td><%= check_box_tag "amigo[#{amigo.id}]", amigo.id %></td>
+          <td><%= amigo.nombre %></td>
+          <td><%= amigo.apellido %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= submit_tag 'Agregar contactos' %>
+
+<% end %> 

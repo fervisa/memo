@@ -65,9 +65,7 @@ ActiveRecord::Schema.define(:version => 20110919160436) do
   add_index "emails", ["amistad_id"], :name => "index_emails_on_amistad_id"
 
   create_table "historials", :force => true do |t|
-    t.integer  "amistad_id"
-    t.date     "fecha"
-    t.time     "hora"
+    t.integer  "amigo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "platica_file_name"
@@ -76,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20110919160436) do
     t.datetime "platica_updated_at"
   end
 
-  add_index "historials", ["amistad_id"], :name => "index_historials_on_amistad_id"
+  add_index "historials", ["amigo_id"], :name => "index_historials_on_amigo_id"
 
   create_table "skins", :force => true do |t|
     t.string   "margen"

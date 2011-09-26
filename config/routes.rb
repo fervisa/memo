@@ -1,14 +1,34 @@
 Memo::Application.routes.draw do
 
+  resources :historials do
+    # get "listar", :on => :collection
+    get "detalle", :on => :member
+  end
+
   resources :skins do
     get 'get', :on => :member
   end
+
+  resources :amistads do
+    collection do
+      get 'no_amigos'
+      get 'si_amigos'
+
+      post 'create'
+      post 'delete'
+    end
+  end    
+
 
   devise_for :usuarios
 
   match "/chat/send", :controller => "chat", :action => "send_message"
   match "/chat/canal1", :controller => "chat", :action => "canal1"
   match "/chat/canal2", :controller => "chat", :action => "canal2"
+  match "/chat/enviar_email", :controller => "chat", :action => "enviar_email", :method => :post
+  match "/chat/email", :controller => "chat", :action => "email"
+  match "/chat/avatar", :controller => "chat", :action => "avatar"
+  match "/historial/guardar", :controller => "historial", :action => "guardar", :method => :post
 
   match '/usuario' => "chat#canal1", :as => :usuario_root
 

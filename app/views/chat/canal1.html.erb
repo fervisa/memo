@@ -3,44 +3,47 @@
   <div class="prepend-4 prepend-top span-15 last">
 
     <div class="span-15 last" id="cabecera">
-      <div class="prepend-3 span-2" id="usuario">
+      <div class="span-3"><%= image_tag 'logo.png', :class => 'logo' %></div>
+      <div class="span-2" id="usuario">
         <strong><%= current_usuario.amigo.nombre if current_usuario %></strong><br/>
         <em>En línea</em>
       </div>
 
       <div class="span-1" id="add_contact">
-        <%= link_to image_tag('chat/adcontactos.png'), '#' %>
+        <%= link_to image_tag('chat/adcontactos.png'), no_amigos_amistads_path, :class => 'modal', :remote => true %>
       </div>
 
       <div class="span-1" id="mail">
-        <%= link_to image_tag('chat/sobre.png'), '#' %>
+        <%= link_to image_tag('chat/sobre.png'), '/chat/email', :class => 'modal', :remote => true %>
       </div>
 
       <div class="span-8 last" id="menu">
 	<ul id="menu-horizontal" class="curved">
 	   <li class="curved">Archivo
 		<ul>
-		     <li><%= link_to 'Cerrar sesión', destroy_usuario_session_path, :method => :delete %></li>
+                  <li><%= link_to 'Cerrar sesión', destroy_usuario_session_path, :method => :delete, :id => 'salir' %></li>
+                  <!--
 		     <li>Estado
 			<ul>
 			   <li>Disponible</li>
 			   <li>Ausente</li>
 			   <li>Desconectado</li>
 			</ul>
-		     </li>
-		     <li>Ver Historial</li>
+                        </li>
+                        -->
+                     <li><%= link_to 'Ver Historial', '#', :id => 'historial' %></li>
 		</ul>
 	   </li>
 	   <li class="curved">Contactos
-		<ul>
-		     <li>Agregar Contacto</li>
-		     <li>Eliminar Contacto</li>
-		</ul>	   
+              <ul>
+                <li><%= link_to 'Agregar Contacto', no_amigos_amistads_path, :class => 'modal', :remote => true %></li>
+                <li><%= link_to 'Eliminar Contacto', si_amigos_amistads_path, :class => 'modal', :remote => true %></li>
+              </ul>	   
            </li>
 	   <li class="curved">Acciones
 		<ul>
-		     <li>Enviar E-mail</li>
-		     <li>Enviar Avatar</li>
+                  <li><%= link_to 'Enviar E-mail', '/chat/email', :class => 'modal', :remote => true %></li>
+                  <li><%= link_to 'Enviar Avatar', '/chat/avatar', :class => 'modal', :remote => true %></li>
 		</ul>
 	    </li>
 	   <li id="herramientas" class="curved">Herramientas
@@ -63,24 +66,9 @@
  			<div class="galery_avatar">
 			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
 			    <div class="boxgalery_avatar">
-                              <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
+                              <%= link_to image_tag(avatar.thumb.url), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
-		 	    <div class="boxgalery_avatar">
-			  	<em>avatar2</em>
-			    </div>
-		 	    <div class="boxgalery_avatar">
-			  	<em>avatar3</em>
-			    </div>
-		 	    <div class="boxgalery_avatar">
-			  	<em>avatar4</em>
-			    </div>
-		 	    <div class="boxgalery_avatar">
-			  	<em>avatar5</em>
-			    </div>
-		 	    <div class="boxgalery_avatar">
-			  	<em>avatar6</em>
-			    </div>
 			</div>
 		</ul>
            </li>
@@ -94,7 +82,7 @@
       <div class="span-14 prepend-1 last prepend-top">
         <div class="span-5">
           <div class='span-5 last' id="player">
-            <div id="emoticon">
+            <div id="emoticon" style="z-index: -1;">
               <%= image_tag 'chat/emoticon.png' %>
             </div>
           </div>
@@ -113,11 +101,18 @@
           <div class="push-1 span-7 last" id="chat"></div>
           <div class="push-1 span-7 last" id="mensaje">
             <script type="text/javascript" charset="utf-8">
-              $f('emoticon', '/flowplayer.swf');
+              $f('emoticon', '/flowplayer.swf', {
+                clip: {
+                  onFinish: function(){ this.getPlugin("play").hide(); }
+                },
+                plugins: {
+                    controls: null
+                }
+              });
               var jug = new Juggernaut();
 
               $("#chat").append($("<li/>").append("Entrando al salón de charla"));
-              jug.subscribe("/chats/canal1_canal2", function(data){
+              jug.subscribe("/chats/canal1", function(data){
                   if (data.hasOwnProperty('avatar') && data.usuario != '<%= current_usuario.email %>'){
                   $f().play(data.avatar);
                 }
@@ -125,7 +120,9 @@
                 li.text(data.mensaje);
                 $("#chat").append(li);
                 $("#chat").attr({ scrollTop: $("#chat").attr("scrollHeight") });
-                $('#msg_body').val('');
+                if (data.usuario == '<%= current_usuario.email %>'){
+                  $('#msg_body').val('');
+                }
               }); 
             </script>
             <%= form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
@@ -137,7 +134,7 @@
  			<div id="avatars" class="galery_avatar">
 			  <% current_usuario.amigo.avatars.all.each do |avatar| %>
 			    <div class="boxgalery_avatar">
-                              <%= link_to image_tag('chat/skin.png'), "#", :class => 'avatar', :value => avatar.nombre %>
+                              <%= link_to image_tag(avatar.thumb.url), "#", :class => 'avatar', :value => avatar.nombre %>
 			    </div>
 			  <% end %>
 			</div>		</div>
@@ -154,3 +151,4 @@
 </div>
 
 <div id="modal"></div>
+<div id="historial"><%= render 'historials/listar' %></div>

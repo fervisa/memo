@@ -75,9 +75,26 @@ ami2.save
 
 av1 = Avatar.create :nombre => ':)', :amigo => u1.amigo
 av1.avatar = open "#{Rails.root}/public/hola.flv"
+av1.thumb = open "#{Rails.root}/public/pngemociones/feliz.png"
 av1.save
 
-av2 = Avatar.create :nombre => ':)', :amigo => u2.amigo
-av2.avatar = open "#{Rails.root}/public/hola1.flv"
+av2 = Avatar.create :nombre => ':D', :amigo => u1.amigo
+av2.avatar = open "#{Rails.root}/public/hola.flv"
+av2.thumb = open "#{Rails.root}/public/pngemociones/emocionado.png"
 av2.save
+
+av3 = Avatar.create :nombre => ':@', :amigo => u1.amigo
+av3.avatar = open "#{Rails.root}/public/hola.flv"
+av3.thumb = open "#{Rails.root}/public/pngemociones/enojado.png"
+av3.save
+
+av4 = Avatar.create :nombre => ':|', :amigo => u1.amigo
+av4.avatar = open "#{Rails.root}/public/hola.flv"
+av4.thumb = open "#{Rails.root}/public/pngemociones/neutral.png"
+av4.save
+
+av5 = Avatar.create :nombre => ':)', :amigo => u2.amigo
+av5.avatar = open "#{Rails.root}/public/hola1.flv"
+av5.thumb = open "#{Rails.root}/public/pngemociones/feliz.png"
+av5.save
 

@@ -1,0 +1,31 @@
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<%= form_tag delete_amistads_path, :remote => true  do %>
+  <table class="ui-widget ui-widget-content">
+    <thead class='ui-widget-header'>
+      <tr>
+        <th style="text-align: center">&#x2713;</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @amistades.each do |amistad| %>
+        <tr>
+          <td><%= check_box_tag "amistad[#{amistad.id}]", amistad.id %></td>
+          <td><%= amistad.amigo_destino.nombre %></td>
+          <td><%= amistad.amigo_destino.apellido %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= submit_tag 'Eliminar contactos' %>
+
+<% end %> 

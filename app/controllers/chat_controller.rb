@@ -5,7 +5,7 @@ class ChatController < ApplicationController
     @messg = params[:msg_body]
     @sender = params[:sender]
     respuesta = parse_chat_message(params[:msg_body])
-    Juggernaut.publish(select_channel("/canal1_canal2"), respuesta)
+    Juggernaut.publish("/chats/canal1", respuesta)
     respond_to do |format|
       format.js { render :json => respuesta }
     end
@@ -30,4 +30,53 @@ class ChatController < ApplicationController
     return "/chats#{receiver}"
   end
 
+  def email
+    respond_to do |format|
+      format.html { render :layout => false, :partial => 'email' } 
+      format.js
+    end
+  end
+
+  def enviar_email
+    if params[:asunto] and params[:email] and params[:mensaje]
+      # SolicitudMailer.delay.contacto(params[:email], params[:nombre], params[:mensaje], params[:telefono]) 
+      puts '*****Enviando email******'
+    else
+      msg_error = "Los campos email, asunto y mensaje son obligatorios."
+    end
+
+    respond_to do |format|
+      if msg_error 
+        flash[:alert] = msg_error
+      else
+        flash[:notice] = "Su correo ha sido enviado correctamente."
+      end
+      format.html { redirect_to(:action => :email) }
+    end
+  end
+
+  def avatar
+    respond_to do |format|
+      format.html { render :layout => false, :partial => 'avatar'}
+      format.js
+    end
+  end
+
+  def enviar_avatar
+    if params[:asunto] and params[:email] and params[:mensaje] and params[:avatar]
+      # SolicitudMailer.delay.contacto(params[:email], params[:nombre], params[:mensaje], params[:telefono]) 
+      puts '*****Enviando email******'
+    else
+      msg_error = "Los campos email, asunto, avatar y mensaje son obligatorios."
+    end
+
+    respond_to do |format|
+      if msg_error 
+        flash[:alert] = msg_error
+      else
+        flash[:notice] = "Su avatar ha sido enviado por correo correctamente."
+      end
+      format.html { redirect_to(:action => :avatar) }
+    end
+  end
 end
