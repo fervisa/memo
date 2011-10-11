@@ -25,6 +25,8 @@ gem 'devise'
 
 gem 'paperclip'
 
+gem 'activeadmin'
+
 # gem 'cancan'
 
 # Use unicorn as the web server
